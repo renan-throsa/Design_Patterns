@@ -4,14 +4,23 @@
 
 #include "Budget.h"
 
-Budget::Budget(int value) {
+Budget::Budget(int value,Taxation* taxation) {
     this->value = value;
+    this->taxation = taxation;
 }
 
 int Budget::getValue() const {
     return value;
 }
 
-void Budget::setValue(int value) {
-    Budget::value = value;
+double Budget::operation() const {
+    return taxation->calculate(this->value);
+}
+
+Taxation *Budget::getTaxation() const {
+    return taxation;
+}
+
+void Budget::setTaxation(Taxation *taxation) {
+    Budget::taxation = taxation;
 }

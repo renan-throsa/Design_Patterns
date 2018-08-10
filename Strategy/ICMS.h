@@ -6,8 +6,17 @@
 #define DESIGN_PATTERNS_ICMS_H
 
 
-class ICMS {
+#include "Taxation.h"
 
+class ICMS: public Taxation {
+public:
+    const std::string &getName() const;
+
+    ICMS(double);
+    double calculate(double);
+
+private:
+    std::string name;
 };
 
 

@@ -4,19 +4,13 @@
 
 #include "Taxation.h"
 
-template<class Tax>
-double Taxation<Tax>::calculate(Budget *budget, Tax *tax) {
-    return budget->getValue() * 0.1;
+Taxation::Taxation(double value) {
+    this->rate = value;
 }
 
-template<class Tax>
-std::ostream &operator<<(std::ostream &output, const Taxation<Tax> &taxation) {
+std::ostream &operator<<(std::ostream & ostream, const Taxation &taxation) {
     std::cout << "Taxation is Theft!" << std::endl;
-    return output;
+    return ostream;
 }
 
-template<class Tax>
-Taxation<Tax>::~Taxation() {
-    std::cout << "Destroying Taxation\n" << std::endl;
-}
 

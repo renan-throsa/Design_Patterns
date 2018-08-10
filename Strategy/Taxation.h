@@ -6,18 +6,19 @@
 #define DESIGN_PATTERNS_TAXATION_H
 
 #include <iostream>
-#include "Budget.h"
-template< class Tax >
+
+
 class Taxation {
 public:
 
-    double calculate(Budget*, Tax*);
+    Taxation(double rate);
 
-    ~Taxation();
+    virtual double calculate(double budget)=0;
 
     friend std::ostream &operator<<(std::ostream &, const Taxation &);
 
-
+protected:
+    double rate;
 };
 
 

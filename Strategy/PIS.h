@@ -5,13 +5,19 @@
 #ifndef DESIGN_PATTERNS_PIS_H
 #define DESIGN_PATTERNS_PIS_H
 
+#include <string>
+#include "Taxation.h"
 
-class PIS {
+
+
+class PIS : public Taxation {
 public:
+    PIS(double);
     double calculate(double);
 
 private:
-    const double rate = 0.5;
+    std::string name;
+
 };
 
 

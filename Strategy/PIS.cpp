@@ -4,6 +4,11 @@
 
 #include "PIS.h"
 
+PIS::PIS(double value) : Taxation(value) {
+    this->name = "PIS";
+}
+
 double PIS::calculate(double value) {
     return value * this->rate;
 }
+

@@ -6,17 +6,23 @@
 #define DESIGN_PATTERNS_BUDGET_H
 
 
+#include "Taxation.h"
+
 class Budget {
 public:
-    Budget(int value);
+    Budget(int, Taxation *);
 
     int getValue() const;
 
-    void setValue(int value);
+    double operation() const;
 
+    void setTaxation(Taxation *taxation);
+
+    Taxation *getTaxation() const;
 
 private:
     int value;
+    Taxation *taxation;
 };
 
 
