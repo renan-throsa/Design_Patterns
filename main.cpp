@@ -4,6 +4,7 @@
 #include "Strategy/PIS.h"
 #include "Strategy/ICMS.h"
 
+
 int main() {
     std::cout << "Hello, World! Testing the Strategy Patterns" << std::endl;
 
@@ -15,5 +16,6 @@ int main() {
 
     budget.setTaxation(new ICMS(0.25));
     std::cout << budget.operation() << std::endl;
+
     return 0;
 }

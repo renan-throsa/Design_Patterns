@@ -8,9 +8,8 @@ Taxation::Taxation(double value) {
     this->rate = value;
 }
 
-std::ostream &operator<<(std::ostream & ostream, const Taxation &taxation) {
-    std::cout << "Taxation is Theft!" << std::endl;
-    return ostream;
+std::ostream &Taxation::output(std::ostream &os) const {
+    os << "Taxation is Theft!";
+    return os;
 }
-
 

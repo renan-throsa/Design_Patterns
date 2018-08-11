@@ -6,6 +6,7 @@
 #define DESIGN_PATTERNS_TAXATION_H
 
 #include <iostream>
+#include <sstream>
 
 
 class Taxation {
@@ -13,13 +14,18 @@ public:
 
     Taxation(double rate);
 
-    virtual double calculate(double budget)=0;
+    virtual double calculate(double budget) = 0;
 
-    friend std::ostream &operator<<(std::ostream &, const Taxation &);
+    virtual std::ostream &output(std::ostream &os) const;
+
+    friend std::ostream &operator<<(std::ostream &os, const Taxation &component) {
+        return component.output(os);
+    }
 
 protected:
     double rate;
 };
+
 
 
 #endif //DESIGN_PATTERNS_TAXATION_H

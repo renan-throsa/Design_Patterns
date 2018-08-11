@@ -9,14 +9,17 @@
 #include "Taxation.h"
 
 
-
 class PIS : public Taxation {
 public:
     PIS(double);
+
     double calculate(double);
+
+    virtual std::ostream &output(std::ostream &os) const;
 
 private:
     std::string name;
+
 
 };
 

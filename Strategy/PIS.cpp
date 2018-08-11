@@ -12,3 +12,9 @@ double PIS::calculate(double value) {
     return value * this->rate;
 }
 
+std::ostream& PIS::output(std::ostream &os) const {
+    os << "PIS rate has been applied \n";
+    return os;
+}
+
+

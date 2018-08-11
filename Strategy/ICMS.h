@@ -8,12 +8,15 @@
 
 #include "Taxation.h"
 
-class ICMS: public Taxation {
+class ICMS : public Taxation {
 public:
     const std::string &getName() const;
 
     ICMS(double);
+
     double calculate(double);
+
+    virtual std::ostream &output(std::ostream &os) const;
 
 private:
     std::string name;
