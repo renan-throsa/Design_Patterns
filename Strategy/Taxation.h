@@ -10,6 +10,10 @@
 
 
 class Taxation {
+    friend std::ostream &operator<<(std::ostream &os, const Taxation &taxation) {
+        return taxation.output(os);
+    }
+
 public:
 
     Taxation(double rate);
@@ -18,14 +22,9 @@ public:
 
     virtual std::ostream &output(std::ostream &os) const;
 
-    friend std::ostream &operator<<(std::ostream &os, const Taxation &component) {
-        return component.output(os);
-    }
-
 protected:
     double rate;
 };
-
 
 
 #endif //DESIGN_PATTERNS_TAXATION_H

@@ -17,6 +17,6 @@ const std::string &ICMS::getName() const {
 }
 
 std::ostream &ICMS::output(std::ostream &os) const {
-    os << "ICMS rate has been applied \n";
+    os << this->name << " rate has been applied \n";
     return os;
 }
