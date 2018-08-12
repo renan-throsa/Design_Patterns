@@ -6,18 +6,18 @@
 #define DESIGN_PATTERNS_PREMIUMDISCOUNT_H
 
 #include <ostream>
+#include "Discount.h"
 
-template<class Discount>
-class SpecialDiscount {
-    friend std::ostream &operator<<(std::ostream &, const SpecialDiscount &);
+
+class SpecialDiscount : public Discount {
+
 
 public:
     SpecialDiscount(Discount *);
 
-    double CalculateDiscount(Discount *);
+    virtual double CalculateDiscount(Budget *);
+    virtual std::ostream &output(std::ostream &) const;
 
-private:
-    Discount next;
 };
 
 

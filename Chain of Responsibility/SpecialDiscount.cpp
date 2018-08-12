@@ -3,21 +3,25 @@
 //
 
 #include "SpecialDiscount.h"
-template<class Discount>
-SpecialDiscount<Discount>::SpecialDiscount(Discount *next) {
-    this->next = next;
-}
 
-template<class Discount>
-double SpecialDiscount<Discount>::CalculateDiscount(Discount *discount) {
-    if (discount->getItems().size() > 5) {
-        return discount->getValue * 0.1;
+
+SpecialDiscount::SpecialDiscount(Discount *next) : Discount(next) {}
+
+
+double SpecialDiscount::CalculateDiscount(Budget *budget) {
+    if (budget->getValue() > 3000.00 and budget->getPayment_method() == Payment::CASH_PAYMENT) {
+        return budget->getValue() * 0.3;
+    } else {
+        if (next) {
+            return next->CalculateDiscount(budget);
+        } else {
+            return 0;
+        }
     }
-    return 0;
+
 }
 
-template<class Discount>
-std::ostream &operator<<(std::ostream &os, const SpecialDiscount<Discount> &discount) {
+std::ostream &SpecialDiscount::output(std::ostream &os) const {
     os << "Applying a simple discount";
     return os;
 }

@@ -6,18 +6,17 @@
 #define DESIGN_PATTERNS_SPECIALDISCOUNT_H
 
 #include <ostream>
+#include "Discount.h"
 
-template<class Discount>
-class AmountDiscount {
-    friend std::ostream &operator<<(std::ostream &, const AmountDiscount &);
+class AmountDiscount : public Discount {
 
 public:
     AmountDiscount(Discount *);
 
-    double CalculateDiscount(Discount *);
+    virtual double CalculateDiscount(Budget *);
 
-private:
-    Discount next;
+    virtual std::ostream &output(std::ostream &) const;
+
 };
 
 

@@ -3,4 +3,4 @@ project(Design_Patterns)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Design_Patterns main.cpp base/Budget.h base/Budget.cpp base/Budget.h Strategy/Taxation.cpp Strategy/Taxation.h Strategy/PIS.cpp Strategy/PIS.h Strategy/ICMS.cpp Strategy/ICMS.h base/Item.cpp base/Item.h "Chain of Responsibility/QuantityDiscount.cpp" "Chain of Responsibility/QuantityDiscount.h" "Chain of Responsibility/AmountDiscount.cpp" "Chain of Responsibility/AmountDiscount.h" "Chain of Responsibility/SpecialDiscount.cpp" "Chain of Responsibility/SpecialDiscount.h")
+add_executable(Design_Patterns main.cpp base/Budget.h base/Budget.cpp base/Budget.h Strategy/Taxation.cpp Strategy/Taxation.h Strategy/PIS.cpp Strategy/PIS.h Strategy/ICMS.cpp Strategy/ICMS.h base/Item.cpp base/Item.h "Chain of Responsibility/QuantityDiscount.cpp" "Chain of Responsibility/QuantityDiscount.h" "Chain of Responsibility/AmountDiscount.cpp" "Chain of Responsibility/AmountDiscount.h" "Chain of Responsibility/SpecialDiscount.cpp" "Chain of Responsibility/SpecialDiscount.h" "Chain of Responsibility/Discount.cpp" "Chain of Responsibility/Discount.h")

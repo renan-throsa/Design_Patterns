@@ -17,21 +17,25 @@ int Budget::getValue() {
     return total;
 }
 
-double Budget::operation() {
+double Budget::operationTaxation() {
     return taxation->calculate(this->getValue());
 }
+
 
 Taxation *Budget::getTaxation() {
     return taxation;
 }
 
+
 void Budget::setItem(Item *item) {
     items.push_back(item);
 }
 
+
 std::vector<Item *> Budget::getItems() {
     return items;
 }
+
 
 void Budget::setTaxation(Taxation *taxation) {
     Budget::taxation = taxation;
@@ -43,4 +47,10 @@ Payment Budget::getPayment_method() const {
 
 void Budget::setPayment_method(Payment payment_method) {
     Budget::payment_method = payment_method;
+}
+
+
+double Budget::operationDiscount(Discount *discount) {
+    double value_of_discount = discount->CalculateDiscount(this);
+    return value_of_discount;
 }

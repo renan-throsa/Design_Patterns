@@ -9,10 +9,12 @@
 #include "../Strategy/Taxation.h"
 #include <vector>
 #include "Item.h"
+#include "../Chain of Responsibility/Discount.h"
 
 enum Payment {
     CASH_PAYMENT, DEFERRED_PAYMENT
 };
+
 
 class Budget {
 public:
@@ -28,9 +30,11 @@ public:
 
     void setPayment_method(Payment payment_method);
 
-    double operation();
+    double operationTaxation();
 
     void setTaxation(Taxation *taxation);
+
+    double operationDiscount(Discount *);
 
     Taxation *getTaxation();
 

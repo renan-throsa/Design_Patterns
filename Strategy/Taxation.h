@@ -20,7 +20,8 @@ public:
 
     virtual double calculate(double budget) = 0;
 
-    virtual std::ostream &output(std::ostream &os) const;
+    //That function will be overwrite.
+    virtual std::ostream &output(std::ostream &os) const = 0;
 
 protected:
     double rate;

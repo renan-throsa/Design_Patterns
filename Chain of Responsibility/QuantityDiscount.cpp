@@ -4,22 +4,24 @@
 
 #include "QuantityDiscount.h"
 
-template<class Discount>
-QuantityDiscount<Discount>::QuantityDiscount(Discount *next) {
-    this->next = next;
-}
 
-template<class Discount>
-double QuantityDiscount<Discount>::CalculateDiscount(Discount *discount) {
-    if (discount->getItems().size() > 5) {
-        return discount->getValue * 0.1;
+QuantityDiscount::QuantityDiscount(Discount *next) : Discount(next) {}
+
+
+double QuantityDiscount::CalculateDiscount(Budget *budget) {
+    if (budget->getItems().size() > 5 and budget->getPayment_method() == Payment::DEFERRED_PAYMENT) {
+        return budget->getValue() * 0.1;
+    } else {
+        if (next) {
+            return next->CalculateDiscount(budget);
+        } else {
+            return 0;
+        }
     }
-    return 0;
 }
 
-template<class Discount>
-std::ostream &operator<<(std::ostream &os, const QuantityDiscount<Discount> &discount) {
-    os << "Applying a simple discount";
+std::ostream &QuantityDiscount::output(std::ostream &os) const {
+    os << "Applying discount based on the quantity of items";
     return os;
 }
 

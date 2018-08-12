@@ -16,7 +16,7 @@ public:
 
     double calculate(double);
 
-    virtual std::ostream &output(std::ostream &os) const;
+    virtual std::ostream &output(std::ostream &) const;
 
 private:
     std::string name;

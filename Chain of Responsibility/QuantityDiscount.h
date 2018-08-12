@@ -7,18 +7,19 @@
 
 
 #include <ostream>
+#include "Discount.h"
 
-template<class Discount>
-class QuantityDiscount {
-    friend std::ostream &operator<<(std::ostream &, const QuantityDiscount &);
+
+class QuantityDiscount : public Discount {
+
 
 public:
     QuantityDiscount(Discount *);
 
-    double CalculateDiscount(Discount *);
+    virtual double CalculateDiscount(Budget *);
 
-private:
-    Discount next;
+    virtual std::ostream &output(std::ostream &) const;
+
 };
 
 
