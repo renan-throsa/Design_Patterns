@@ -6,7 +6,6 @@
 #define DESIGN_PATTERNS_TAXATION_H
 
 #include <iostream>
-#include <sstream>
 
 
 class Taxation {

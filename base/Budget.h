@@ -5,11 +5,8 @@
 #ifndef DESIGN_PATTERNS_BUDGET_H
 #define DESIGN_PATTERNS_BUDGET_H
 
-
-#include "../Strategy/Taxation.h"
 #include <vector>
 #include "Item.h"
-#include "../Chain of Responsibility/Discount.h"
 
 enum Payment {
     CASH_PAYMENT, DEFERRED_PAYMENT
@@ -20,7 +17,7 @@ class Budget {
 public:
     Budget();
 
-    int getValue();
+    int getTotal();
 
     std::vector<Item *> getItems();
 
@@ -30,18 +27,10 @@ public:
 
     void setPayment_method(Payment payment_method);
 
-    double operationTaxation();
-
-    void setTaxation(Taxation *taxation);
-
-    double operationDiscount(Discount *);
-
-    Taxation *getTaxation();
-
 private:
     std::vector<Item *> items;
-    Taxation *taxation;
     enum Payment payment_method;
+    double value;
 };
 
 

@@ -9,8 +9,9 @@
 AmountDiscount::AmountDiscount(Discount *next) : Discount(next) {}
 
 double AmountDiscount::CalculateDiscount(Budget *budget) {
-    if (budget->getValue() > 2000.00 and budget->getPayment_method() == Payment::DEFERRED_PAYMENT) {
-        return budget->getValue() * 0.25;
+    if (budget->getTotal() > 2000.00 and budget->getPayment_method() == Payment::DEFERRED_PAYMENT) {
+        std::cout << *this;
+        return budget->getTotal() * 0.20;
     } else {
         if (next) {
             return next->CalculateDiscount(budget);
@@ -22,6 +23,6 @@ double AmountDiscount::CalculateDiscount(Budget *budget) {
 }
 
 std::ostream &AmountDiscount::output(std::ostream &os) const {
-    os << "Applying a discount based on the total amount";
+    os << "Applying a discount based on the total amount." << std::endl;;
     return os;
 }

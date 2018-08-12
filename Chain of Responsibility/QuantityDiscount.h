@@ -6,7 +6,6 @@
 #define DESIGN_PATTERNS_SIMPLEDISCOUNT_H
 
 
-#include <ostream>
 #include "Discount.h"
 
 

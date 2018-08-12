@@ -5,8 +5,8 @@
 #ifndef DESIGN_PATTERNS_DISCOUNT_H
 #define DESIGN_PATTERNS_DISCOUNT_H
 
-
 #include <ostream>
+#include <iostream>
 #include "../base/Budget.h"
 
 class Discount {
@@ -18,6 +18,7 @@ class Discount {
 public:
 
     Discount(Discount *);
+
     virtual double CalculateDiscount(Budget *) = 0;
 
     virtual std::ostream &output(std::ostream &os) const = 0;

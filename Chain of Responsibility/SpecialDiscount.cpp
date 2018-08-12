@@ -9,8 +9,9 @@ SpecialDiscount::SpecialDiscount(Discount *next) : Discount(next) {}
 
 
 double SpecialDiscount::CalculateDiscount(Budget *budget) {
-    if (budget->getValue() > 3000.00 and budget->getPayment_method() == Payment::CASH_PAYMENT) {
-        return budget->getValue() * 0.3;
+    if (budget->getTotal() > 3000.00 and budget->getPayment_method() == Payment::CASH_PAYMENT) {
+        std::cout << *this;
+        return budget->getTotal() * 0.3;
     } else {
         if (next) {
             return next->CalculateDiscount(budget);
@@ -22,6 +23,6 @@ double SpecialDiscount::CalculateDiscount(Budget *budget) {
 }
 
 std::ostream &SpecialDiscount::output(std::ostream &os) const {
-    os << "Applying a simple discount";
+    os << "Applying a simple discount." << std::endl;
     return os;
 }

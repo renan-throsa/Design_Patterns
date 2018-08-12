@@ -5,7 +5,6 @@
 #ifndef DESIGN_PATTERNS_SPECIALDISCOUNT_H
 #define DESIGN_PATTERNS_SPECIALDISCOUNT_H
 
-#include <ostream>
 #include "Discount.h"
 
 class AmountDiscount : public Discount {
