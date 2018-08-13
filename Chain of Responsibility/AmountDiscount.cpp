@@ -11,7 +11,9 @@ AmountDiscount::AmountDiscount(Discount *next) : Discount(next) {}
 double AmountDiscount::CalculateDiscount(Budget *budget) {
     if (budget->getTotal() > 2000.00 and budget->getPayment_method() == Payment::DEFERRED_PAYMENT) {
         std::cout << *this;
-        return budget->getTotal() * 0.20;
+        double discount = budget->getTotal() * 0.20;
+        budget->setValue(budget->getTotal() - discount);
+        return discount;
     } else {
         if (next) {
             return next->CalculateDiscount(budget);

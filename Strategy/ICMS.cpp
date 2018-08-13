@@ -8,11 +8,21 @@ ICMS::ICMS(double value) : Taxation(value) {
     this->name = "ICMS";
 }
 
-double ICMS::calculate(double value) {
-    return value * this->rate;
+double ICMS::calculate(Budget *budget) {
+    if (budget->getClient()->getKind() == Identification::INDUVIDUAL) {
+        double tax = budget->getValue() * this->rate;
+        double newValue = budget->getValue() - tax;
+        budget->setValue(newValue);
+        return tax;
+    } else {
+        double tax = budget->getValue() * this->rate + budget->getValue() * 0.01;
+        double newValue = budget->getValue() - tax;
+        budget->setValue(newValue);
+        return tax;
+    }
 }
 
-const std::string &ICMS::getName() const {
+const std::string ICMS::getName() const {
     return name;
 }
 

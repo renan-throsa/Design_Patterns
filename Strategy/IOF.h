@@ -9,11 +9,11 @@
 #include "Taxation.h"
 
 
-class PIS : public Taxation {
+class IOF : public Taxation {
 public:
-    PIS(double);
+    IOF(double);
 
-    double calculate(double);
+    double calculate(Budget *);
 
     virtual std::ostream &output(std::ostream &os) const;
 

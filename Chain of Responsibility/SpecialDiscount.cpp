@@ -11,7 +11,9 @@ SpecialDiscount::SpecialDiscount(Discount *next) : Discount(next) {}
 double SpecialDiscount::CalculateDiscount(Budget *budget) {
     if (budget->getTotal() > 3000.00 and budget->getPayment_method() == Payment::CASH_PAYMENT) {
         std::cout << *this;
-        return budget->getTotal() * 0.3;
+        double discount = budget->getTotal() * 0.30;
+        budget->setValue(budget->getTotal() - discount);
+        return discount;
     } else {
         if (next) {
             return next->CalculateDiscount(budget);

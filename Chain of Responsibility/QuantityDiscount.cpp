@@ -12,7 +12,9 @@ QuantityDiscount::QuantityDiscount(Discount *next) : Discount(next) {}
 double QuantityDiscount::CalculateDiscount(Budget *budget) {
     if (budget->getItems().size() > 5 and budget->getPayment_method() == Payment::DEFERRED_PAYMENT) {
         std::cout << *this;
-        return budget->getTotal() * 0.1;
+        double discount = budget->getTotal() * 0.1;
+        budget->setValue(budget->getTotal() - discount);
+        return discount;
     } else {
         if (next) {
             return next->CalculateDiscount(budget);

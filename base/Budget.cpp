@@ -4,7 +4,8 @@
 
 #include "Budget.h"
 
-Budget::Budget() {
+Budget::Budget(Client *client) {
+    this->client = client;
     this->value = 0;
 }
 
@@ -17,9 +18,9 @@ int Budget::getTotal() {
     return total;
 }
 
-
 void Budget::setItem(Item *item) {
     items.push_back(item);
+    value += item->getPrice();
 }
 
 
@@ -34,6 +35,24 @@ Payment Budget::getPayment_method() const {
 
 void Budget::setPayment_method(Payment payment_method) {
     Budget::payment_method = payment_method;
+}
+
+double Budget::getValue() const {
+    return value;
+}
+
+void Budget::setValue(double value) {
+    Budget::value = value;
+}
+
+Client *Budget::getClient() const {
+    return client;
+}
+
+std::ostream &operator<<(std::ostream &os, const Budget &budget) {
+    os << "items: " << " payment_method: " << budget.payment_method << " value: " << budget.value
+       << " client: " << budget.client;
+    return os;
 }
 
 

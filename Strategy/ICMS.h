@@ -10,11 +10,11 @@
 
 class ICMS : public Taxation {
 public:
-    const std::string &getName() const;
+    const std::string getName() const;
 
     ICMS(double);
 
-    double calculate(double);
+    double calculate(Budget*);
 
     virtual std::ostream &output(std::ostream &) const;
 

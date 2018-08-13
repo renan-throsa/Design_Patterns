@@ -5,18 +5,12 @@
 #include "TaxationManagement.h"
 #include "Taxation.h"
 
-TaxationManagement::TaxationManagement(Taxation *tax) {
-    this->taxation = tax;
+TaxationManagement::TaxationManagement() {
+
 }
 
-double TaxationManagement::performeDiscount(Budget *budget) {
-    return this->taxation->calculate(budget->getTotal());
+double TaxationManagement::performeTaxation(Budget *budget, Taxation *taxation) {
+    return taxation->calculate(budget);
 }
 
-Taxation *TaxationManagement::getTaxation() {
-    return this->taxation;
-}
 
-void TaxationManagement::setTaxation(Taxation *tax) {
-    this->taxation = tax;
-}

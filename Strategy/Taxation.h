@@ -6,6 +6,7 @@
 #define DESIGN_PATTERNS_TAXATION_H
 
 #include <iostream>
+#include "../base/Budget.h"
 
 
 class Taxation {
@@ -17,7 +18,7 @@ public:
 
     Taxation(double rate);
 
-    virtual double calculate(double budget) = 0;
+    virtual double calculate(Budget *) = 0;
 
     //That function will be overwrite.
     virtual std::ostream &output(std::ostream &os) const = 0;

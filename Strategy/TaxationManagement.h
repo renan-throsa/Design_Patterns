@@ -11,16 +11,10 @@
 
 class TaxationManagement {
 public:
-    TaxationManagement(Taxation *);
+    TaxationManagement();
 
-    double performeDiscount(Budget *);
+    double performeTaxation(Budget *, Taxation *);
 
-    Taxation *getTaxation();
-
-    void setTaxation(Taxation *);
-
-private:
-    Taxation *taxation;
 };
 
 
