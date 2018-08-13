@@ -12,9 +12,10 @@ class ICMS : public Taxation {
 public:
     const std::string getName() const;
 
-    ICMS(double);
+    ICMS(double, Taxation *taxation = nullptr);
 
-    double calculate(Budget*);
+
+    double calculate(Budget *);
 
     virtual std::ostream &output(std::ostream &) const;
 

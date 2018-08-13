@@ -14,7 +14,6 @@ class Discount {
         return discount.output(os);
     }
 
-
 public:
 
     Discount(Discount *);

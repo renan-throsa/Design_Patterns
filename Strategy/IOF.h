@@ -11,7 +11,8 @@
 
 class IOF : public Taxation {
 public:
-    IOF(double);
+
+    IOF(double,Taxation *taxation = nullptr);
 
     double calculate(Budget *);
 
@@ -19,8 +20,6 @@ public:
 
 private:
     std::string name;
-
-
 };
 
 

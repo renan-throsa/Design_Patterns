@@ -4,7 +4,7 @@
 
 #include "ICMS.h"
 
-ICMS::ICMS(double value) : Taxation(value) {
+ICMS::ICMS(double value, Taxation *taxation) : Taxation(value, taxation) {
     this->name = "ICMS";
 }
 
@@ -13,12 +13,12 @@ double ICMS::calculate(Budget *budget) {
         double tax = budget->getValue() * this->rate;
         double newValue = budget->getValue() - tax;
         budget->setValue(newValue);
-        return tax;
+        return tax + this->taxation->additionalTribute(budget);
     } else {
         double tax = budget->getValue() * this->rate + budget->getValue() * 0.01;
         double newValue = budget->getValue() - tax;
         budget->setValue(newValue);
-        return tax;
+        return tax + this->taxation->additionalTribute(budget);
     }
 }
 
