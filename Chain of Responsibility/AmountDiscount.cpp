@@ -2,7 +2,6 @@
 // Created by renan on 11/08/18.
 //
 
-#include <ostream>
 #include "AmountDiscount.h"
 
 
@@ -10,9 +9,9 @@ AmountDiscount::AmountDiscount(Discount *next) : Discount(next) {}
 
 double AmountDiscount::CalculateDiscount(Budget *budget) {
     if (budget->getTotal() > 2000.00 and budget->getPayment_method() == Payment::DEFERRED_PAYMENT) {
-        std::cout << *this;
         double discount = budget->getTotal() * 0.20;
         budget->setValue(budget->getTotal() - discount);
+        std::cout << *this << discount;
         return discount;
     } else {
         if (next) {
@@ -25,6 +24,6 @@ double AmountDiscount::CalculateDiscount(Budget *budget) {
 }
 
 std::ostream &AmountDiscount::output(std::ostream &os) const {
-    os << "Applying a discount based on the total amount." << std::endl;;
+    os << "Applying a discount based over the total amount of: R$ ";
     return os;
 }

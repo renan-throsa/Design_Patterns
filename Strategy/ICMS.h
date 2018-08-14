@@ -9,11 +9,11 @@
 #include "Taxation.h"
 
 class ICMS : public Taxation {
+
 public:
     const std::string getName() const;
 
     ICMS(double, Taxation *taxation = nullptr);
-
 
     double calculate(Budget *);
 

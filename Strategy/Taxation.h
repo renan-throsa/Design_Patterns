@@ -16,18 +16,21 @@ class Taxation {
 
 public:
 
-    Taxation(double rate, Taxation *taxation = nullptr);
+    Taxation(double, Taxation *taxation = nullptr);
 
     virtual double calculate(Budget *) = 0;
-
-    virtual double additionalTribute(Budget *) = 0;
 
     //That function will be overwrite.
     virtual std::ostream &output(std::ostream &os) const = 0;
 
+
 protected:
-    Taxation *taxation;
+
+    double additionalTribute(Budget *);
+
     double rate;
+private:
+    Taxation *taxation;
 };
 
 

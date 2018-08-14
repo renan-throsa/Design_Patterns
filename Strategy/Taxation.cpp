@@ -19,3 +19,5 @@ double Taxation::additionalTribute(Budget *budget) {
 
 
 
+
+

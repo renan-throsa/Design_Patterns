@@ -6,8 +6,11 @@
 #define DESIGN_PATTERNS_ITEM_H
 
 
-#include <iosfwd>
 #include <ostream>
+
+enum Fabricated {
+    NATIONAL_PRODUCT, INTERNATIONAL_PRODUCT
+};
 
 class Item {
 

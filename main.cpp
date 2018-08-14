@@ -7,8 +7,6 @@
 #include "Chain of Responsibility/QuantityDiscount.h"
 #include "Chain of Responsibility/SpecialDiscount.h"
 #include "Chain of Responsibility/AmountDiscount.h"
-#include "Chain of Responsibility/DiscountManagement.h"
-#include "Strategy/TaxationManagement.h"
 
 int main() {
     std::cout << "Hello, World! Testing the Strategy Patterns" << std::endl;
@@ -25,17 +23,19 @@ int main() {
     for (Item *item : budget.getItems()) {
         std::cout << *item << std::endl;
     }
+    std::cout << "Before the discount: " << budget.getValue() << std::endl;
 
     budget.setPayment_method(Payment::DEFERRED_PAYMENT);
 
-    DiscountManagement dtmanagement(new QuantityDiscount(new AmountDiscount(new SpecialDiscount(nullptr))));
+    Discount *dtmanagement = new QuantityDiscount(new AmountDiscount(new SpecialDiscount(nullptr)));
 
-    std::cout << dtmanagement.performeDiscount(&budget) << std::endl;
+    dtmanagement->CalculateDiscount(&budget);
 
-    TaxationManagement txmanagement;
 
-    std::cout << "Total: " << budget.getTotal() << " Tributes: "
-              << txmanagement.performeTaxation(&budget, new ICMS(0.25)) << std::endl;
+    Taxation *tax = new ICMS(0.2, new IOF(0.11));
+
+    std::cout << "\nTotal: " << budget.getValue() << " Tributes: "
+              << tax->calculate(&budget) << std::endl;
     std::cout << "After tributes: " << budget.getValue() << std::endl;
 
     return 0;

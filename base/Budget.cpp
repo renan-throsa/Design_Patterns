@@ -2,6 +2,7 @@
 // Created by renan on 10/08/18.
 //
 
+#include <iostream>
 #include "Budget.h"
 
 Budget::Budget(Client *client) {
@@ -42,7 +43,7 @@ double Budget::getValue() const {
 }
 
 void Budget::setValue(double value) {
-    Budget::value = value;
+    this->value = value;
 }
 
 Client *Budget::getClient() const {
@@ -51,7 +52,7 @@ Client *Budget::getClient() const {
 
 std::ostream &operator<<(std::ostream &os, const Budget &budget) {
     os << "items: " << " payment_method: " << budget.payment_method << " value: " << budget.value
-       << " client: " << budget.client;
+       << " client: " << *budget.client;
     return os;
 }
 

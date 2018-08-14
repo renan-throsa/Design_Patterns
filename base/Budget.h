@@ -14,7 +14,6 @@ enum Payment {
     CASH_PAYMENT, DEFERRED_PAYMENT
 };
 
-
 class Budget {
 
     friend std::ostream &operator<<(std::ostream &os, const Budget &budget);
