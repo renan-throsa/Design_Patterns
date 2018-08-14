@@ -9,6 +9,8 @@
 #include <ostream>
 #include "Item.h"
 #include "Client.h"
+#include "../States/Status.h"
+
 
 enum Payment {
     CASH_PAYMENT, DEFERRED_PAYMENT
@@ -22,7 +24,7 @@ public:
 
     Budget(Client *);
 
-    int getTotal();
+    double getTotal();
 
     std::vector<Item *> getItems();
 
@@ -34,6 +36,10 @@ public:
 
     Client *getClient() const;
 
+    Status *getPayment_status() const;
+
+    void setPayment_status(Status *payment_status);
+
     double getValue() const;
 
     void setValue(double value);
@@ -41,6 +47,7 @@ public:
 private:
     std::vector<Item *> items;
     Payment payment_method;
+    Status payment_status;
     double value;
     Client *client;
 

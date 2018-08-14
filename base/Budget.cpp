@@ -10,7 +10,7 @@ Budget::Budget(Client *client) {
     this->value = 0;
 }
 
-int Budget::getTotal() {
+double Budget::getTotal() {
     double total = 0.0;
     for (Item *item : this->items) {
         total += item->getPrice();
@@ -54,6 +54,14 @@ std::ostream &operator<<(std::ostream &os, const Budget &budget) {
     os << "items: " << " payment_method: " << budget.payment_method << " value: " << budget.value
        << " client: " << *budget.client;
     return os;
+}
+
+Status *Budget::getPayment_status() const {
+    return payment_status;
+}
+
+void Budget::setPayment_status(Status *payment_status) {
+    Budget::payment_status = payment_status;
 }
 
 

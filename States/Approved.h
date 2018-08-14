@@ -11,7 +11,7 @@
 class Approved : public Status {
 public:
     std::ostream &output(std::ostream &os) const override;
-    void analyze(Budget *) override;
+    void apply(Budget *) override;
 };
 
 

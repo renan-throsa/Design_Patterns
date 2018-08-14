@@ -13,10 +13,20 @@ class Status {
         return status.output(os);
     }
 
+    virtual void pass(Budget *) = 0;
+
+    virtual void reject(Budget *) = 0;
+
+    virtual void conclude(Budget *) = 0;
+
+    virtual void apply(Budget *) = 0;
+
 protected:
+
+
     virtual std::ostream &output(std::ostream &os) const = 0;
 
-    virtual void analyze(Budget *) = 0;
+
 };
 
 

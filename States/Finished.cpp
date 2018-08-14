@@ -4,12 +4,25 @@
 
 #include "Finished.h"
 
-void Finished::analyze(Budget *budget) {
-    double extra_discount = budget->getValue() * 0.10;
+void Finished::apply(Budget *budget) {
+    double extra_discount = budget->getValue() * 0.02;
     budget->setValue(budget->getValue() - extra_discount);
 }
 
+
+void Finished::pass(Budget *budget) {
+    budget->setPayment_status(new Approved())
+}
+
+void Finished::reject(Budget *budget) {
+    budget->setPayment_status(new Denied())
+}
+
+void Finished::conclude(Budget *budget) {
+    std::runtime_error("Cannot conclude before denying it");
+}
+
 std::ostream &Finished::output(std::ostream &os) const {
-    os<<"Status: Finished";
+    os << "Status: Finished";
     return os;
 }

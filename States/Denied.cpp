@@ -5,9 +5,9 @@
 #include "Denied.h"
 
 void Denied::analyze(Budget *budget) {
-    double extra_discount = budget->getValue() * 0.00;
-    budget->setValue(budget->getValue() - extra_discount);
+    throw std::invalid_argument("Cannot apply a discount on denied budget.");
 }
+
 
 std::ostream &Denied::output(std::ostream &os) const {
     os << "Status: Waiting";

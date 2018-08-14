@@ -5,14 +5,23 @@
 #ifndef DESIGN_PATTERNS_WAITING_H
 #define DESIGN_PATTERNS_WAITING_H
 
-
 #include "Status.h"
+#include "Denied.h"
+#include "Approved.h"
 
 class Waiting : public Status {
 public:
 
     std::ostream &output(std::ostream &os) const override;
-    void analyze(Budget *) override;
+
+    void apply(Budget *) override;
+
+    void pass(Budget *) override;
+
+    void reject(Budget *) override;
+
+    void conclude(Budget *) override;
+
 
 };
 

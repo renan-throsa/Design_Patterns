@@ -6,12 +6,23 @@
 #define DESIGN_PATTERNS_FINISHEE_H
 
 #include "Status.h"
+#include "Denied.h"
+#include "Approved.h"
 
 
 class Finished : public Status {
-    std::ostream &output(std::ostream &os) const override;
 
-    void analyze(Budget *) override;
+
+    void apply(Budget *) override;
+
+    void pass(Budget *) override;
+
+    void reject(Budget *) override;
+
+    void conclude(Budget *) override;
+
+protected:
+    std::ostream &output(std::ostream &os) const override;
 };
 
 
