@@ -1,15 +1,16 @@
 #include <iostream>
 #include "base/Budget.h"
-#include "Strategy/Taxation.h"
-#include "Strategy/IOF.h"
-#include "Strategy/ICMS.h"
-#include "Chain of Responsibility/Discount.h"
-#include "Chain of Responsibility/QuantityDiscount.h"
-#include "Chain of Responsibility/SpecialDiscount.h"
-#include "Chain of Responsibility/AmountDiscount.h"
+#include "Tributes/Taxation.h"
+#include "Tributes/IOF.h"
+#include "Tributes/ICMS.h"
+#include "Discounts/Discount.h"
+#include "Discounts/QuantityDiscount.h"
+#include "Discounts/SpecialDiscount.h"
+#include "Discounts/AmountDiscount.h"
+#include "Tributes/IPI.h"
 
 int main() {
-    std::cout << "Hello, World! Testing the Strategy Patterns" << std::endl;
+    std::cout << "Hello, World! Testing the Tributes Patterns" << std::endl;
 
 
     Budget budget(new Client("Torvald Linus", INDUVIDUAL));
@@ -32,7 +33,7 @@ int main() {
     dtmanagement->CalculateDiscount(&budget);
 
 
-    Taxation *tax = new ICMS(0.2, new IOF(0.11));
+    Taxation *tax = new ICMS(0.2, new IOF(0.11, new IPI(0.1)));
 
     std::cout << "\nTotal: " << budget.getValue() << " Tributes: "
               << tax->calculate(&budget) << std::endl;

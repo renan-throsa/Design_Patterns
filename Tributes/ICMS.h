@@ -15,13 +15,15 @@ public:
 
     ICMS(double, Taxation *taxation = nullptr);
 
-    double calculate(Budget *);
+    double calculate(Budget *) override;
 
-    virtual std::ostream &output(std::ostream &) const;
+    std::ostream &output(std::ostream &) const override;
 
 private:
     std::string name;
 };
+
+
 
 
 #endif //DESIGN_PATTERNS_ICMS_H

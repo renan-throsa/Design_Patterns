@@ -14,9 +14,9 @@ public:
 
     IOF(double,Taxation *taxation = nullptr);
 
-    double calculate(Budget *);
+    double calculate(Budget *) override;
 
-    virtual std::ostream &output(std::ostream &os) const;
+    virtual std::ostream &output(std::ostream &os) const override;
 
 private:
     std::string name;

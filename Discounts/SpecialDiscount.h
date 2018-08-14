@@ -15,8 +15,8 @@ class SpecialDiscount : public Discount {
 public:
     SpecialDiscount(Discount *);
 
-    virtual double CalculateDiscount(Budget *);
-    virtual std::ostream &output(std::ostream &) const;
+    double CalculateDiscount(Budget *) override;
+    std::ostream &output(std::ostream &) const override;
 
 };
 

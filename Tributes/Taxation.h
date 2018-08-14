@@ -20,11 +20,11 @@ public:
 
     virtual double calculate(Budget *) = 0;
 
+protected:
+
     //That function will be overwrite.
     virtual std::ostream &output(std::ostream &os) const = 0;
 
-
-protected:
 
     double additionalTribute(Budget *);
 

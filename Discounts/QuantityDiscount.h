@@ -15,9 +15,9 @@ class QuantityDiscount : public Discount {
 public:
     QuantityDiscount(Discount *);
 
-    virtual double CalculateDiscount(Budget *);
+    double CalculateDiscount(Budget *) override;
 
-    virtual std::ostream &output(std::ostream &) const;
+    std::ostream &output(std::ostream &) const override;
 
 };
 

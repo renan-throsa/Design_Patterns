@@ -18,7 +18,7 @@ double IOF::calculate(Budget *budget) {
         double tax = budget->getValue() * this->rate - budget->getValue() * 0.02;
         double newValue = budget->getValue() + tax;
         budget->setValue(newValue);
-        return tax;
+        return tax + this->additionalTribute(budget);
     }
 }
 

@@ -40,9 +40,10 @@ public:
 
 private:
     std::vector<Item *> items;
-    enum Payment payment_method;
+    Payment payment_method;
     double value;
     Client *client;
+
 };
 
 
