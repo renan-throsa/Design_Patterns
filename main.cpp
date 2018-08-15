@@ -24,14 +24,24 @@ int main() {
     for (Item *item : budget.getItems()) {
         std::cout << *item << std::endl;
     }
+
+    //Testing Chain of Responsibility pattern.
     std::cout << "Before the discount: " << budget.getValue() << std::endl;
 
     budget.setPayment_method(Payment::DEFERRED_PAYMENT);
 
     Discount *dtmanagement = new QuantityDiscount(new AmountDiscount(new SpecialDiscount(nullptr)));
 
-    dtmanagement->CalculateDiscount(&budget);
+    //Testing State pattern.
+    budget.apply();
+    budget.approve();
+    budget.apply();
+    budget.conclude();
+    //budget.reject(); It is working like a charm
 
+
+    //Testing Decorator pattern.
+    dtmanagement->CalculateDiscount(&budget);
 
     Taxation *tax = new ICMS(0.2, new IOF(0.11, new IPI(0.1)));
 

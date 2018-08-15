@@ -13,7 +13,11 @@ class Status {
         return status.output(os);
     }
 
-    virtual void pass(Budget *) = 0;
+
+public:
+
+    Status();
+    virtual void approve(Budget *) = 0;
 
     virtual void reject(Budget *) = 0;
 
@@ -22,11 +26,9 @@ class Status {
     virtual void apply(Budget *) = 0;
 
 protected:
-
-
     virtual std::ostream &output(std::ostream &os) const = 0;
 
-
+    bool discount_applied;
 };
 
 

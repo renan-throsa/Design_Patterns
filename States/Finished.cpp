@@ -3,23 +3,25 @@
 //
 
 #include "Finished.h"
+#include "Denied.h"
+#include "Approved.h"
+
 
 void Finished::apply(Budget *budget) {
-    double extra_discount = budget->getValue() * 0.02;
-    budget->setValue(budget->getValue() - extra_discount);
+    throw std::runtime_error("Cannot apply a discount if it has already been finished");
 }
 
 
-void Finished::pass(Budget *budget) {
-    budget->setPayment_status(new Approved())
+void Finished::approve(Budget *budget) {
+    throw std::runtime_error("Cannot approve if it has already been finished");
 }
 
 void Finished::reject(Budget *budget) {
-    budget->setPayment_status(new Denied())
+    throw std::runtime_error("Cannot reject if it has already been finished");
 }
 
 void Finished::conclude(Budget *budget) {
-    std::runtime_error("Cannot conclude before denying it");
+    throw std::runtime_error("Cannot finish if it has already been finished");
 }
 
 std::ostream &Finished::output(std::ostream &os) const {

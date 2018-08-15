@@ -2,12 +2,16 @@
 // Created by renan on 10/08/18.
 //
 
-#include <iostream>
+
+
 #include "Budget.h"
+#include "../States/Waiting.h"
+
 
 Budget::Budget(Client *client) {
     this->client = client;
     this->value = 0;
+    this->payment_status = new Waiting();
 }
 
 double Budget::getTotal() {
@@ -26,12 +30,12 @@ void Budget::setItem(Item *item) {
 
 
 std::vector<Item *> Budget::getItems() {
-    return items;
+    return Budget::items;
 }
 
 
 Payment Budget::getPayment_method() const {
-    return payment_method;
+    return Budget::payment_method;
 }
 
 void Budget::setPayment_method(Payment payment_method) {
@@ -39,15 +43,15 @@ void Budget::setPayment_method(Payment payment_method) {
 }
 
 double Budget::getValue() const {
-    return value;
+    return Budget::value;
 }
 
 void Budget::setValue(double value) {
-    this->value = value;
+    Budget::value = value;
 }
 
 Client *Budget::getClient() const {
-    return client;
+    return Budget::client;
 }
 
 std::ostream &operator<<(std::ostream &os, const Budget &budget) {
@@ -63,5 +67,23 @@ Status *Budget::getPayment_status() const {
 void Budget::setPayment_status(Status *payment_status) {
     Budget::payment_status = payment_status;
 }
+
+void Budget::apply(void) {
+    Budget::payment_status->apply(this);
+}
+
+void Budget::approve() {
+    Budget::payment_status->approve(this);
+}
+
+void Budget::reject() {
+    Budget::payment_status->reject(this);
+}
+
+void Budget::conclude() {
+    Budget::payment_status->conclude(this);
+}
+
+
 
 

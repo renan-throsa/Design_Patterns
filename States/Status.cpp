@@ -3,3 +3,7 @@
 //
 
 #include "Status.h"
+
+Status::Status() {
+    discount_applied = false;
+}

@@ -6,8 +6,6 @@
 #define DESIGN_PATTERNS_FINISHEE_H
 
 #include "Status.h"
-#include "Denied.h"
-#include "Approved.h"
 
 
 class Finished : public Status {
@@ -15,7 +13,7 @@ class Finished : public Status {
 
     void apply(Budget *) override;
 
-    void pass(Budget *) override;
+    void approve(Budget *) override;
 
     void reject(Budget *) override;
 

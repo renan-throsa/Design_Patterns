@@ -10,13 +10,14 @@
 #include "Approved.h"
 
 class Waiting : public Status {
+
 public:
 
     std::ostream &output(std::ostream &os) const override;
 
     void apply(Budget *) override;
 
-    void pass(Budget *) override;
+    void approve(Budget *) override;
 
     void reject(Budget *) override;
 

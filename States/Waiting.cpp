@@ -2,25 +2,30 @@
 // Created by renan on 14/08/18.
 //
 
+#include <iostream>
 #include "Waiting.h"
 
 
 void Waiting::apply(Budget *budget) {
-    double extra_discount = budget->getValue() * 0.02;
-    budget->setValue(budget->getValue() - extra_discount);
+    if (Waiting::discount_applied) {
+        Waiting::discount_applied = true;
+        double extra_discount = budget->getValue() * 0.10;
+        budget->setValue(budget->getValue() - extra_discount);
+    } else{
+        throw std::runtime_error("Cannot apply a discount if it has already been applied");
+    }
 }
 
-
-void Waiting::pass(Budget *budget) {
-    budget->setPayment_status(new Approved())
+void Waiting::approve(Budget *budget) {
+    budget->setPayment_status(new Approved());
 }
 
 void Waiting::reject(Budget *budget) {
-    budget->setPayment_status(new Denied())
+    budget->setPayment_status(new Denied());
 }
 
 void Waiting::conclude(Budget *budget) {
-    std::runtime_error("Cannot conclude before denying it");
+    throw std::runtime_error("Cannot conclude if it has already been Waiting");
 }
 
 std::ostream &Waiting::output(std::ostream &os) const {
