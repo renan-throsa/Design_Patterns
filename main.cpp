@@ -8,7 +8,7 @@
 #include "Discounts/SpecialDiscount.h"
 #include "Discounts/AmountDiscount.h"
 #include "Tributes/IPI.h"
-#include "Builder/Constructor.h"
+#include "Builder/ConstructInvoice.h"
 #include "base/Invoice.h"
 
 int main() {
@@ -52,10 +52,10 @@ int main() {
 
 
     //Testing Builder pattern.
-    Constructor constructor;
-    Invoice *invoice = constructor.withName("UFPA")->withCnpj("24161115000126")->withItems(
+
+    Invoice *invoice = ConstructInvoice().withName("UFPA")->withCnpj("24161115000126")->withItems(
             budget.getItems())->withDate(
-            time(0))->withDeatail("Testing the builder pattern")->buildInvoice();
+            time(0))->withDetail("Testing the builder pattern")->buildInvoice();
     std::cout << std::endl;
     std::cout << *invoice << std::endl;
 

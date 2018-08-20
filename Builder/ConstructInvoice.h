@@ -11,28 +11,28 @@
 #include "../base/Item.h"
 #include "../base/Invoice.h"
 
-class Constructor {
+class ConstructInvoice {
 public:
-    Constructor();
+    ConstructInvoice();
 
-    Invoice *buildInvoice(void);
+    Invoice *buildInvoice();
 
-    Constructor *withName(std::string);
+    ConstructInvoice *withName(std::string);
 
-    Constructor *withCnpj(std::string);
+    ConstructInvoice *withCnpj(std::string);
 
-    Constructor *withItems(std::vector<Item *> &);
+    ConstructInvoice *withItems(std::vector<Item *> &);
 
-    Constructor *withDate(time_t);
+    ConstructInvoice *withDate(time_t);
 
-    Constructor *withDeatail(std::string);
+    ConstructInvoice *withDetail(std::string);
 
 private:
     void setSocial_name(const std::string &social_name);
 
     void setCnpj(const std::string &cnpj);
 
-    void setDetails(const std::string &details);
+    void setDetails(const std::string);
 
     void setDate(time_t date);
 

@@ -11,13 +11,14 @@
 #include <ostream>
 #include "Item.h"
 
+
 class Invoice {
 public:
     friend std::ostream &operator<<(std::ostream &os, const Invoice &invoice);
 
 public:
 
-    Invoice(std::string, std::string, std::vector<Item *>&, std::string details = "", time_t date = time(0));
+    Invoice(std::string&, std::string&, std::vector<Item *>&, std::string details = "", time_t date = time(0));
 
     const std::string &getCnpj() const;
 
@@ -28,7 +29,7 @@ public:
     time_t getDate() const;
 
 
-    std::vector<Item *> *getItems() const;
+    std::vector<Item *> &getItems();
 
     const std::string &getSocial_name() const;
 
@@ -38,7 +39,7 @@ private:
     std::string cnpj;
     std::string details;
     time_t date;
-    std::vector<Item *> *items;
+    std::vector<Item *> items;
 
 };
 
