@@ -27,7 +27,7 @@ public:
 
     double getTotal();
 
-    std::vector<Item *> getItems();
+    std::vector<Item *> &getItems();
 
     void setItem(Item *);
 

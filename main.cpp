@@ -8,6 +8,8 @@
 #include "Discounts/SpecialDiscount.h"
 #include "Discounts/AmountDiscount.h"
 #include "Tributes/IPI.h"
+#include "Builder/Constructor.h"
+#include "base/Invoice.h"
 
 int main() {
     std::cout << "Hello, World! Testing the Tributes Patterns" << std::endl;
@@ -35,7 +37,6 @@ int main() {
     //Testing State pattern.
     budget.apply();
     budget.approve();
-    budget.apply();
     budget.conclude();
     //budget.reject(); It is working like a charm
 
@@ -48,6 +49,15 @@ int main() {
     std::cout << "\nTotal: " << budget.getValue() << " Tributes: "
               << tax->calculate(&budget) << std::endl;
     std::cout << "After tributes: " << budget.getValue() << std::endl;
+
+
+    //Testing Builder pattern.
+    Constructor constructor;
+    Invoice *invoice = constructor.withName("UFPA")->withCnpj("24161115000126")->withItems(
+            budget.getItems())->withDate(
+            time(0))->withDeatail("Testing the builder pattern")->buildInvoice();
+    std::cout << std::endl;
+    std::cout << *invoice << std::endl;
 
     return 0;
 }

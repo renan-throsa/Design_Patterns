@@ -29,10 +29,9 @@ void Budget::setItem(Item *item) {
 }
 
 
-std::vector<Item *> Budget::getItems() {
+std::vector<Item *> &Budget::getItems() {
     return Budget::items;
 }
-
 
 Payment Budget::getPayment_method() const {
     return Budget::payment_method;

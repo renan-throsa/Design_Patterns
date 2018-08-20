@@ -8,13 +8,13 @@
 #include "Finished.h"
 
 void Approved::apply(Budget *budget) {
-    if (Approved::discount_applied) {
+    if (!Approved::discount_applied) {
         Approved::discount_applied = true;
         std::cout << discount_applied;
         double extra_discount = budget->getValue() * 0.12;
         budget->setValue(budget->getValue() - extra_discount);
     } else {
-        throw std::runtime_error("Cannot apply a discount if it has already been applied.");
+        throw std::runtime_error("Payment approved. Cannot apply a discount if it has already been applied.");
     }
 }
 
