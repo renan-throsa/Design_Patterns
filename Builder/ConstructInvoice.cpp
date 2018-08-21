@@ -11,11 +11,15 @@ ConstructInvoice::ConstructInvoice() = default;
 
 
 Invoice *ConstructInvoice::buildInvoice() {
-
-    return new Invoice(social_name, cnpj, items, details, date);
+    Invoice *invoice = new Invoice(social_name, cnpj, items, details, date);
+    for (Observer *observer: observers) {
+        observer->send(invoice);
+    }
+    return invoice;
 };
 
 ConstructInvoice *ConstructInvoice::withName(std::string name) {
+
     setSocial_name(name);
     return this;
 }
@@ -67,6 +71,15 @@ void ConstructInvoice::setItems(std::vector<Item *> &items) {
         throw std::runtime_error("List of items cannot be null or empty.");
     }
     ConstructInvoice::items = items;
+}
+
+const std::vector<Observer *> &ConstructInvoice::getObservers() const {
+    return observers;
+}
+
+ConstructInvoice *ConstructInvoice::withObserver(Observer *observer) {
+
+    ConstructInvoice::observers.push_back(observer);
 }
 
 

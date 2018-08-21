@@ -17,6 +17,7 @@ class Status {
 public:
 
     Status();
+
     virtual void approve(Budget *) = 0;
 
     virtual void reject(Budget *) = 0;

@@ -10,6 +10,8 @@
 #include "Tributes/IPI.h"
 #include "Builder/ConstructInvoice.h"
 #include "base/Invoice.h"
+#include "Observers/Email.h"
+#include "Observers/Bank.h"
 
 int main() {
     std::cout << "Hello, World! Testing the Tributes Patterns" << std::endl;
@@ -58,6 +60,21 @@ int main() {
             time(0))->withDetail("Testing the builder pattern")->buildInvoice();
     std::cout << std::endl;
     std::cout << *invoice << std::endl;
+
+    //Testing Observer pattern.
+
+    invoice = ConstructInvoice().withName("UFRA")
+            ->withCnpj("85286739000164")
+            ->withItems(budget.getItems())
+            ->withDate(time(0))
+            ->withDetail("Testing the observer pattern")
+            ->withObserver(new Email())
+            ->withObserver(new Bank())
+            ->buildInvoice();
+
+    std::cout << std::endl;
+    std::cout << *invoice << std::endl;
+
 
     return 0;
 }

@@ -10,6 +10,7 @@
 #include <vector>
 #include "../base/Item.h"
 #include "../base/Invoice.h"
+#include "../Observers/Observer.h"
 
 class ConstructInvoice {
 public:
@@ -27,16 +28,20 @@ public:
 
     ConstructInvoice *withDetail(std::string);
 
+    ConstructInvoice *withObserver(Observer *);
+
 private:
     void setSocial_name(const std::string &social_name);
 
     void setCnpj(const std::string &cnpj);
 
-    void setDetails(const std::string);
+    void setDetails(std::string);
 
     void setDate(time_t date);
 
     void setItems(std::vector<Item *> &items);
+
+    const std::vector<Observer *> &getObservers() const;
 
 
     std::string social_name;
@@ -44,6 +49,7 @@ private:
     std::string details;
     time_t date;
     std::vector<Item *> items;
+    std::vector<Observer *> observers;
 
 
 };
