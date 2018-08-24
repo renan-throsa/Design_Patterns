@@ -75,6 +75,5 @@ int main() {
     std::cout << std::endl;
     std::cout << *invoice << std::endl;
 
-
     return 0;
 }

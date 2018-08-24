@@ -6,15 +6,15 @@
 #include "Email.h"
 
 Email::Email() : Observer() {
-    std::cout << "Class email created";
+    std::cout << "Class email created" << std::endl;
 }
 
 void Email::send(Invoice *) {
-    std::cout << "Invoice has been sent by email";
+    std::cout << "Invoice has been sent by email" << std::endl;
 }
 
 std::ostream &Email::output(std::ostream &os) const {
-    os << "Sending by email.";
+    os << "This class send invoice by email." << std::endl;
     return os;
 }
 

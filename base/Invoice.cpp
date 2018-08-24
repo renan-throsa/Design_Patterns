@@ -12,6 +12,7 @@ Invoice::Invoice(std::string &name, std::string &cnpj, std::vector<Item *> &item
     this->cnpj = cnpj;
     this->items = items;
     this->details = std::move(details);
+    this->date  = date;
 }
 
 const std::string &Invoice::getCnpj() const {

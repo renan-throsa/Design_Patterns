@@ -24,7 +24,7 @@ double Budget::getTotal() {
 }
 
 void Budget::setItem(Item *item) {
-    items.push_back(item);
+    Budget::items.push_back(item);
     value += item->getPrice();
 }
 

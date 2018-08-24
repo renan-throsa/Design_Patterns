@@ -31,17 +31,15 @@ public:
     ConstructInvoice *withObserver(Observer *);
 
 private:
-    void setSocial_name(const std::string &social_name);
+    void setSocial_name(const std::string &);
 
-    void setCnpj(const std::string &cnpj);
+    void setCnpj(const std::string &);
 
     void setDetails(std::string);
 
-    void setDate(time_t date);
+    void setDate(time_t);
 
-    void setItems(std::vector<Item *> &items);
-
-    const std::vector<Observer *> &getObservers() const;
+    void setItems(std::vector<Item *> &);
 
 
     std::string social_name;
@@ -53,6 +51,5 @@ private:
 
 
 };
-
 
 #endif //DESIGN_PATTERNS_CONSTRUCTOR_H

@@ -11,11 +11,14 @@ ConstructInvoice::ConstructInvoice() = default;
 
 
 Invoice *ConstructInvoice::buildInvoice() {
+
     Invoice *invoice = new Invoice(social_name, cnpj, items, details, date);
-    for (Observer *observer: observers) {
+
+    for (Observer *observer: ConstructInvoice::observers) {
         observer->send(invoice);
     }
     return invoice;
+
 };
 
 ConstructInvoice *ConstructInvoice::withName(std::string name) {
@@ -64,22 +67,15 @@ void ConstructInvoice::setDate(time_t date) {
 }
 
 void ConstructInvoice::setItems(std::vector<Item *> &items) {
-    /* T *ptr=nullptr;
-        T &ref=*ptr;
-     This is a bad programming practice, I am doing this only by learning purposes.*/
-    if (&items == nullptr) {
+    if (items.empty()) {
         throw std::runtime_error("List of items cannot be null or empty.");
     }
     ConstructInvoice::items = items;
 }
 
-const std::vector<Observer *> &ConstructInvoice::getObservers() const {
-    return observers;
-}
-
 ConstructInvoice *ConstructInvoice::withObserver(Observer *observer) {
-
     ConstructInvoice::observers.push_back(observer);
+    return this;
 }
 
 
